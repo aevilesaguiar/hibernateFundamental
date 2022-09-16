@@ -35,4 +35,42 @@ Associações
 Navegação em grafos
 
 
+O que é uma Entidade? Uma entidade é um objeto de dominio que pode ser persistido.
+Uma classe deve se anotada com @Entity ou ser definida por meio da configuração XML. 
+Deve ser uma classe de nível superior e aplicativos e interfaces não podem ser entidades.
+Deve ter um construtor sem argumentos publicos ou protegidos. 
+Pode definir outros construtores.
+A especificação JPA exige que uma classe de entidade não seja final.
+O hibernate não será tão  estrito e permitirá declarar classes finais como entidades. No entanto
+não é uma boa prática, pois impedirá o hibernate de usar o padrão de proxy para melhorar o
+desempenho.
 
+O que uma entidade suporta?
+Uma entidade suporta herança(inheritance) , associação polimorficas(Polymorphic associations) 
+e consultas polimórficas(polymorphic queries).
+O estado persistente da entidade é representado pela variaveis de instancia.
+
+O estado de Persistencia, podem ser dos seguintes tipos:
+- Primitive types (tipos primitivos , byte, short, int, long, float, double, boolean e char);
+- Serializable types: tipos seriazáveis incluindo  aqui wrappers dos tipos primitivos como
+inteiros, ou caractere ou tipos definidos pelo o usuario que implememtam a interface serializable.
+- Outros tipos de entidades: enum, tipos incorporáveis, tipos corporáveis, Collections.
+## Mapeando Objetos
+
+As tabelas de BD s serem mapeadas  para um objeto a ser persistido são determinadas por anotações,
+pelos parâmetros das anotações e pelas regras padrão.
+As anotações que especificam o mapeamento de tabelas são:
+- @Table: especifica a tabela primária(Primary table) para a entidade anotada. Uma classe pode
+não ter a anotação @Table e neste caso o seu nome seria o nome da classe entidade.
+A anotação table pode receber vários parâmetros, e também  adicionar unique constraint (restrição 
+exclusiva). 
+- @SecondaryTable: especifica uma tabela secundária para a aclasse de entidade anotada. Se ausente 
+todos os campos persistentes da entidade são mapeados para a atabela primária.
+Os parametros são os mesmos da anotação Table mais pkJoinColumns e ForeignKey que especificam
+as colunas que são usadas para unir com a chave primaria e a foreignKey para colunas correspondentes
+ao elemento pkJoinColumns usado se a geração da tabela estiver em efeito. 
+- @SecondaryTables: especifica várias tabelas para uma classe de entidade. Se ausente todos s campos
+persistentes são mapeados para a tabela primária. Ela recebe como parâmetro várias anotações SecondaryTable
+cada uma especificndo uma das classes de entidade estrangeira das tabelas secundárias. Cada tabela
+especificada pela SecondaryTable Annotation pode manter o nome da chave primária ou pode 
+especificar chaves primárias com nomes diferentes.

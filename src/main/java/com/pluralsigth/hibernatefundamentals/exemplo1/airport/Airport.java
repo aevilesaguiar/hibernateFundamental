@@ -1,4 +1,4 @@
-package com.pluralsigth.hibernatefundamentals.airport;
+package com.pluralsigth.hibernatefundamentals.exemplo1.airport;
 
 import javax.persistence.*;
 

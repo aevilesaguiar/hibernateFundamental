@@ -1,8 +1,8 @@
-package com.pluralsigth.hibernatefundamentals;
+package com.pluralsigth.hibernatefundamentals.exemplo1.airport.main;
 
-import com.pluralsigth.hibernatefundamentals.airport.Airport;
-import com.pluralsigth.hibernatefundamentals.airport.Passenger;
-import com.pluralsigth.hibernatefundamentals.airport.Ticket;
+import com.pluralsigth.hibernatefundamentals.exemplo1.airport.Airport;
+import com.pluralsigth.hibernatefundamentals.exemplo1.airport.Passenger;
+import com.pluralsigth.hibernatefundamentals.exemplo1.airport.Ticket;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
