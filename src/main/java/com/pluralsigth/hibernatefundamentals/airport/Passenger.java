@@ -1,13 +1,14 @@
 package com.pluralsigth.hibernatefundamentals.airport;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import javax.persistence.*;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 @Entity
 @Table(name = "PASSENGERS")
-public class Passager {
+public class Passenger {
 
     @Id
     @Column(name = "ID")
@@ -16,10 +17,19 @@ public class Passager {
     @Column(name = "NAME")
     private String name;
 
-    public Passager() {
+    @ManyToOne
+    @JoinColumn(name = "AIRPORT_ID")
+    private Airport airport;
+
+    @OneToMany(mappedBy = "passenger")
+    private List<Ticket> tickets= new ArrayList<>();
+
+
+
+    public Passenger() {
     }
 
-    public Passager(int id, String name) {
+    public Passenger(int id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -39,4 +49,25 @@ public class Passager {
     public void setName(String name) {
         this.name = name;
     }
+
+    public Airport getAirport() {
+        return airport;
+    }
+
+    public void setAirport(Airport airport) {
+        this.airport = airport;
+    }
+
+
+    public List<Ticket> getTickets(){
+        return Collections.unmodifiableList(tickets);
+    }
+
+    public  void addTicket(Ticket ticket){
+        tickets.add(ticket);
+
+    }
+
+
+
 }
