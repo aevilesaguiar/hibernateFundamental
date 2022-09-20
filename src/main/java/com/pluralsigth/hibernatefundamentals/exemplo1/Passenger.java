@@ -1,4 +1,4 @@
-package com.pluralsigth.hibernatefundamentals.exemplo1.airport;
+package com.pluralsigth.hibernatefundamentals.exemplo1;
 
 import javax.persistence.*;
 
@@ -12,6 +12,7 @@ public class Passenger {
 
     @Id
     @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     @Column(name = "NAME")
@@ -67,7 +68,6 @@ public class Passenger {
         tickets.add(ticket);
 
     }
-
 
 
 }

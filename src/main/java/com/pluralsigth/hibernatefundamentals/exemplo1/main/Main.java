@@ -1,8 +1,8 @@
-package com.pluralsigth.hibernatefundamentals.exemplo1.airport.main;
+package com.pluralsigth.hibernatefundamentals.exemplo1.main;
 
-import com.pluralsigth.hibernatefundamentals.exemplo1.airport.Airport;
-import com.pluralsigth.hibernatefundamentals.exemplo1.airport.Passenger;
-import com.pluralsigth.hibernatefundamentals.exemplo1.airport.Ticket;
+import com.pluralsigth.hibernatefundamentals.exemplo1.Airport;
+import com.pluralsigth.hibernatefundamentals.exemplo1.Passenger;
+import com.pluralsigth.hibernatefundamentals.exemplo1.Ticket;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -15,13 +15,13 @@ public class Main {
         //Um Entity Manager é sempre obtido através de um EntityManagerFactory
         // que determina os parâmetros de configuração que vão dizer como será o funcionamento do Entity Manager
         //existe um EntityManagerFactory e que diversos Entity Managers podem ser criados por um único EntityManagerFactory.
-        EntityManagerFactory emf= Persistence.createEntityManagerFactory("hibernatefundamentals");
+        EntityManagerFactory emf= Persistence.createEntityManagerFactory("hibernatefundamentals10");
 
         //Um Entity Manager é sempre obtido através de um EntityManagerFactory que determina os parâmetros de configuração
         // que vão dizer como será o funcionamento do Entity Manager.
         //criamos um gerenciador de entidades coma ajuda do EntityManager
         EntityManager em=emf.createEntityManager();
-
+        em.getTransaction().begin();
       //Persistindo uma Entidade
         //Instanciando um objeto
         Airport airport= new Airport(1, "Henri Coanda");
@@ -55,30 +55,6 @@ public class Main {
         em.persist(ticket1);
         em.persist(ticket2);
         em.persist(ticket3);
-
-
-
-
-
-
-
-
-
-        //então começamos a transação
-        em.getTransaction().begin();
-
-        //
-
-
-
-
-
-
-
-
-
-
-
 
 
         em.getTransaction().commit();
